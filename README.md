@@ -1,5 +1,29 @@
 # Terminbuchung – QA-Coding-Challenge (Senior)
 
+## Tests der Abgabe ausführen
+
+Voraussetzungen: JDK 17+, Node.js 22+ und npm. Beide Befehlsblöcke beginnen im Hauptverzeichnis des Repositories.
+
+```text
+cd backend
+.\mvnw.cmd test                  # alle Backend-Tests, 12 schlagen absichtlich fehl
+.\mvnw.cmd test -Dgroups=Defect-4 # ein einzelner Defect
+```
+
+```text
+cd frontend
+npm ci
+npx playwright install chromium
+npm run test:e2e                 # alle E2E-Tests, 3 schlagen absichtlich fehl
+npm run test:e2e:allure          # Tests mit Allure-Report
+npm run report:allure:open       # Report öffnen
+```
+
+Unter Linux/macOS `./mvnw` statt `.\mvnw.cmd`. Playwright startet Backend und Frontend selbst.
+Die Fehlschläge und Annahmen sind in [Abschnitt 9 der Test-Strategie](TESTSTRATEGIE.md#9-gefundene-defects) dokumentiert.
+
+## Aufgabenstellung
+
 Unser Team hat eine kleine Anwendung zur Terminbuchung in einer Arztpraxis entwickelt. Freie Zeitfenster („Slots") können gebucht und wieder storniert werden. Die Anwendung wurde funktional abgenommen, ist aber nie systematisch getestet worden.
 
 Du übernimmst die Rolle des verantwortlichen QA-Experten. Deine Aufgabe besteht aus **drei Teilen**: einer schriftlichen Test-Strategie, deren praktischer Umsetzung und einer kurzen Reflexion zum Einsatz von KI in der QA.
@@ -66,15 +90,6 @@ npm run dev
 
 Öffne http://localhost:5173. Vite leitet Anfragen an `/api` an das Backend weiter.
 
-Die vorhandenen Starter-Tests ausführen – die Playwright-Konfiguration startet Backend und Frontend selbstständig:
-
-```text
-cd frontend
-npm ci
-npx playwright install chromium
-npm run test:e2e
-```
-
 ### Hinweis für Firmennetze
 
 Scheitern npm- oder Playwright-Downloads mit `UNABLE_TO_GET_ISSUER_CERT_LOCALLY`, hilft es, die Zertifikate des Betriebssystems zu aktivieren:
@@ -89,11 +104,6 @@ Scheitern Maven-Downloads mit einem Zertifikatsfehler, hilft unter Windows analo
 ```text
 $env:MAVEN_OPTS='-Djavax.net.ssl.trustStoreType=Windows-ROOT'
 ```
-
-### Tests der Abgabe ausführen
-
-Befehle für Unit-, API- und E2E-Tests sowie den Allure-Report stehen in
-[`TESTSTRATEGIE.md`](TESTSTRATEGIE.md), Abschnitt 7 "Tests ausführen".
 
 ## Die API
 
