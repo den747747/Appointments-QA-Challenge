@@ -13,6 +13,13 @@ playwright-report/
 blob-report/
 playwright/.cache/
 
+# Allure
+allure-results/
+allure-report/
+
+# Playwright MCP (Snapshots/Logs der explorativen Sitzungen)
+.playwright-mcp/
+
 # IDE / OS
 .idea/
 .vscode/

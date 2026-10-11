@@ -5,7 +5,29 @@ const mvnw = process.platform === 'win32' ? '.\\mvnw.cmd' : './mvnw'
 export default defineConfig({
   testDir: './tests',
   workers: 1,
-  use: { baseURL: 'http://127.0.0.1:5173' },
+  reporter: [
+    ['list'],
+    ['html', { open: 'never' }],
+    [
+      'allure-playwright',
+      {
+        resultsDir: 'allure-results',
+        environmentInfo: {
+          Anwendung: 'Terminbuchung (Spring Boot + React/Vite)',
+          Backend: 'http://127.0.0.1:8080',
+          Frontend: 'http://127.0.0.1:5173',
+          Browser: 'Chromium',
+        },
+      },
+    ],
+  ],
+  use: {
+    baseURL: 'http://127.0.0.1:5173',
+    locale: 'de-AT',
+    timezoneId: 'Europe/Vienna',
+    screenshot: 'only-on-failure',
+    trace: 'retain-on-failure',
+  },
   webServer: [
     {
       command: `${mvnw} spring-boot:run`,

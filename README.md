@@ -90,6 +90,11 @@ Scheitern Maven-Downloads mit einem Zertifikatsfehler, hilft unter Windows analo
 $env:MAVEN_OPTS='-Djavax.net.ssl.trustStoreType=Windows-ROOT'
 ```
 
+### Tests der Abgabe ausführen
+
+Befehle für Unit-, API- und E2E-Tests sowie den Allure-Report stehen in
+[`TESTSTRATEGIE.md`](TESTSTRATEGIE.md), Abschnitt 7 "Tests ausführen".
+
 ## Die API
 
 | Methode | Pfad | Zweck |

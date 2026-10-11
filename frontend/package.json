@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "test:e2e": "playwright test",
+    "test:e2e:allure": "allure run --report-name \"Terminbuchung E2E\" -- playwright test",
+    "report:allure:open": "allure open allure-report",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,11 +17,13 @@
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
-    "@playwright/test": "^1.58.2",
+    "allure": "3.20.1",
+    "allure-playwright": "3.13.0",
     "oxlint": "^1.81.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
